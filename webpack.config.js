@@ -26,6 +26,14 @@ module.exports = {
   externals: {
     'jQuery': "window.jQuery"
   },
+  resolve: {
+    alias: {
+      util: __dirname + '/src/util',
+      page: __dirname + '/src/page',
+      service: __dirname + '/src/service',
+      image: __dirname + '/src/image'
+    }
+  },
   devServer: {
     contentBase: './dist/view',
     historyApiFallback: true,

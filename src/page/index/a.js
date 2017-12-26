@@ -1,4 +1,4 @@
 module.exports = function () {
-  // console.log('aaa');
+  console.log('aaa');
   return 'wangabeng';
 };
