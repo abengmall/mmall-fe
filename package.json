@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "hogan": "^1.0.2"
+  },
   "devDependencies": {
     "css-loader": "^0.28.7",
     "es3ify-loader": "^0.2.0",

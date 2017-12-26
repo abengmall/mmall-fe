@@ -28,6 +28,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      /*node_modules: __dirname + '/node_modules',*/
       util: __dirname + '/src/util',
       page: __dirname + '/src/page',
       service: __dirname + '/src/service',
@@ -37,7 +38,8 @@ module.exports = {
   devServer: {
     contentBase: './dist/view',
     historyApiFallback: true,
-    inline: true
+    // inline: true,
+    port: 8080
   },
   module: {
     rules: [
