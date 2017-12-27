@@ -2,22 +2,26 @@ webpackJsonp([0],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(4);
-
-
-/***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(5);
-var $ = __webpack_require__(6);
+module.exports = __webpack_require__(5);
 
-var _mm = __webpack_require__(7);
 
-_mm.request({
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(6);
+var $ = __webpack_require__(7);
+
+__webpack_require__(8);
+__webpack_require__(10);
+
+var _mm = __webpack_require__(12);
+
+/*_mm.request({
   url: '/product/list.do?keyword=1',
   success: function (res) {
     console.log(res);
@@ -33,25 +37,51 @@ var data = {
 };
 
 var template = "Follow {{screenName}}.";
-console.log(_mm.renderHtml(template, data));
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+console.log(_mm.renderHtml(template, data));*/
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = window.jQuery;
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports) {
+
+module.exports = window.jQuery;
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hogan = __webpack_require__(8);
+__webpack_require__(9);
+// 这样引用打包时报错 直接在footer的html模板中引用font-awesome的cdn文件 作为替换方案
+// require('node_modules/font-awesome/css/font-awesome.css');
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(11);
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Hogan = __webpack_require__(13);
 
 var _mm = {
   request: function (param) {
@@ -124,7 +154,7 @@ var _mm = {
 module.exports = _mm;
 
 /***/ }),
-/* 8 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -144,14 +174,14 @@ module.exports = _mm;
 
 // This file is for use with Node.js. See dist/ for browser files.
 
-var Hogan = __webpack_require__(9);
-Hogan.Template = __webpack_require__(10).Template;
+var Hogan = __webpack_require__(14);
+Hogan.Template = __webpack_require__(15).Template;
 Hogan.template = Hogan.Template;
 module.exports = Hogan;
 
 
 /***/ }),
-/* 9 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -580,7 +610,7 @@ module.exports = Hogan;
 
 
 /***/ }),
-/* 10 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -927,4 +957,4 @@ var Hogan = {};
 
 
 /***/ })
-],[3]);
+],[4]);

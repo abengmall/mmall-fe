@@ -1,9 +1,12 @@
 require('./index.css');
 var $ = require('jQuery');
 
+require('page/common/nav-simple/index.js');
+require('page/common/nav/index.js');
+
 var _mm = require('util/mm.js');
 
-_mm.request({
+/*_mm.request({
   url: '/product/list.do?keyword=1',
   success: function (res) {
     console.log(res);
@@ -19,4 +22,4 @@ var data = {
 };
 
 var template = "Follow {{screenName}}.";
-console.log(_mm.renderHtml(template, data));
+console.log(_mm.renderHtml(template, data));*/

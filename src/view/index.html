@@ -3,21 +3,13 @@
 <head>
   <%= require('html-loader!./layout/head-common.html') %>
   <title>首页</title>
-  <style type="text/css">
-    #inner {
-      width: 200px;
-      height: 200px;
-      background: green;
-    }
-  </style>
 </head>
 
 <body>
-  this is index hahahahddd
-  <div id='inner'>
-    <%= require('html-loader!./layout/nav-simple.html') %>
+  <div id='nav'>
+    <!-- <%= require('html-loader!./layout/nav-simple.html') %> -->
+    <%= require('html-loader!./layout/nav.html') %>
   </div>
-
 <%= require('html-loader!./layout/footer.html') %>
 </body>
 </html>

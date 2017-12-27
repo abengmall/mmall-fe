@@ -28,7 +28,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      /*node_modules: __dirname + '/node_modules',*/
+      node_modules: __dirname + '/node_modules',
       util: __dirname + '/src/util',
       page: __dirname + '/src/page',
       service: __dirname + '/src/service',
@@ -75,5 +75,6 @@ module.exports = {
     new ExtractTextPlugin("css/[name].css"),
     new HtmlWebpackPlugin(getHtmlConfig('index')),
     new HtmlWebpackPlugin(getHtmlConfig('login')),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
