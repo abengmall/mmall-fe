@@ -15,9 +15,9 @@ var getHtmlConfig = function (name) {
 module.exports = {
   //入口文件
   entry: {
-    index: ['./src/page/index/index.js'],
-    login: ['./src/page/login/index.js'],
     common: ['./src/page/common/index.js'],
+    index: ['./src/page/index/index.js'],
+    login: ['./src/page/login/index.js']
   },
   output: {
     path: __dirname + '/dist',
@@ -38,8 +38,9 @@ module.exports = {
   devServer: {
     contentBase: './dist/view',
     historyApiFallback: true,
-    // inline: true,
-    port: 8080
+    inline: true,
+    port: 8080,
+    noInfo : true
   },
   module: {
     rules: [
@@ -71,8 +72,8 @@ module.exports = {
       filename: 'js/base.js'
     }),
     // 单独打包css文件
-    new ExtractTextPlugin("[name].css"),
+    new ExtractTextPlugin("css/[name].css"),
     new HtmlWebpackPlugin(getHtmlConfig('index')),
-    new HtmlWebpackPlugin(getHtmlConfig('login'))
+    new HtmlWebpackPlugin(getHtmlConfig('login')),
   ]
 }

@@ -1,10 +1,6 @@
 require('./index.css');
 var $ = require('jQuery');
-var a = require('./a.js');
 
-// $('body').html('hello hahah' + a());
-// 测试数据接口
-// http://www.happymmall.com/product/list.do?keyword=1
 var _mm = require('util/mm.js');
 
 _mm.request({
@@ -19,7 +15,7 @@ _mm.request({
 
 console.log(_mm.getUrlParam('abeng'));
 var data = {
-  screenName: "dhg",
+  screenName: "dhgeeeeeddeee",
 };
 
 var template = "Follow {{screenName}}.";

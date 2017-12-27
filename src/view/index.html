@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%= require('html-loader!./layout/head-html.html') %>
+<head>
+  <%= require('html-loader!./layout/head-common.html') %>
+  <title>首页</title>
   <style type="text/css">
     #inner {
       width: 200px;
@@ -8,11 +10,14 @@
       background: green;
     }
   </style>
+</head>
+
 <body>
   this is index hahahahddd
   <div id='inner'>
-    inner
+    <%= require('html-loader!./layout/nav-simple.html') %>
   </div>
 
+<%= require('html-loader!./layout/footer.html') %>
 </body>
 </html>
