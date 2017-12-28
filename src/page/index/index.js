@@ -1,10 +1,15 @@
 require('./index.css');
 var $ = require('jQuery');
+var _mm = require('util/mm.js');
 
 require('page/common/nav-simple/index.js');
 require('page/common/nav/index.js');
 
-var _mm = require('util/mm.js');
+var navSide = require('page/common/nav-side/index.js');
+navSide.init({name: 'user-center'});
+
+
+require('page/common/header/index.js');
 
 /*_mm.request({
   url: '/product/list.do?keyword=1',

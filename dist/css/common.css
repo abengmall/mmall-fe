@@ -98,4 +98,19 @@ input[type="checkbox"]{
     border-radius: 5px;
     background: url(assets/loading-2cfec.gif) no-repeat;
     opacity: .6;
+}.footer{
+    padding-bottom: 10px;
+}
+.footer .link{
+    text-align: center;
+    color: #666;
+    line-height: 30px;
+}
+.footer .link .link{
+    padding: 0 10px;
+}
+.footer .copyright{
+    text-align: center;
+    color: #666;
+    line-height: 30px;
 }

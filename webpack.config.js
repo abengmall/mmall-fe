@@ -2,10 +2,11 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var getHtmlConfig = function (name) {
+var getHtmlConfig = function (name, title) {
   return {
     template: './src/view/' + name + '.html',
     filename: 'view/' + name + '.html',
+    title: title,
     hash: true,
     inject: 'body',
     chunks: ['common', name]    
@@ -17,7 +18,8 @@ module.exports = {
   entry: {
     common: ['./src/page/common/index.js'],
     index: ['./src/page/index/index.js'],
-    login: ['./src/page/login/index.js']
+    login: ['./src/page/login/index.js'],
+    result: ['./src/page/result/index.js']
   },
   output: {
     path: __dirname + '/dist',
@@ -62,6 +64,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.string$/,
+        use: "html-loader"
       }
     ]
   },
@@ -73,8 +79,9 @@ module.exports = {
     }),
     // 单独打包css文件
     new ExtractTextPlugin("css/[name].css"),
-    new HtmlWebpackPlugin(getHtmlConfig('index')),
-    new HtmlWebpackPlugin(getHtmlConfig('login')),
-    new webpack.HotModuleReplacementPlugin()
+    new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
+    new HtmlWebpackPlugin(getHtmlConfig('login', '用户登录')),
+    new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果'))
+    // new webpack.HotModuleReplacementPlugin()
   ]
 }
