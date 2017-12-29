@@ -96,7 +96,7 @@ input[type="checkbox"]{
     height: 65px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background: url(assets/loading-2cfec.gif) no-repeat;
+    background: url(./dist/viewassets/loading-2cfec.gif) no-repeat;
     opacity: .6;
 }.footer{
     padding-bottom: 10px;
@@ -113,4 +113,14 @@ input[type="checkbox"]{
     text-align: center;
     color: #666;
     line-height: 30px;
+}.nav-simple {
+  height: 60px;
+  line-height: 60p;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+.nav-simple .logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: #c60023;
 }

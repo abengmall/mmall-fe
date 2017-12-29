@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "webpack-dev-server --open"
+    "server": "webpack-dev-server --inline --open --port 8080 --content-base /dist"
   },
   "author": "",
   "license": "ISC",

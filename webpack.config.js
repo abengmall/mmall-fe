@@ -16,13 +16,14 @@ var getHtmlConfig = function (name, title) {
 module.exports = {
   //入口文件
   entry: {
-    common: ['./src/page/common/index.js'],
-    index: ['./src/page/index/index.js'],
-    login: ['./src/page/login/index.js'],
-    result: ['./src/page/result/index.js']
+    'common': ['./src/page/common/index.js'],
+    'index': ['./src/page/index/index.js'],
+    'user-login': ['./src/page/user-login/index.js'],
+    'result': ['./src/page/result/index.js']
   },
   output: {
     path: __dirname + '/dist',
+    publicPath: '/dist',
     filename: 'js/[name].js'
   },
   externals: {
@@ -37,13 +38,13 @@ module.exports = {
       image: __dirname + '/src/image'
     }
   },
-  devServer: {
+/*  devServer: {
     contentBase: './dist/view',
     historyApiFallback: true,
     inline: true,
     port: 8080,
     noInfo : true
-  },
+  },*/
   module: {
     rules: [
       {
@@ -80,7 +81,7 @@ module.exports = {
     // 单独打包css文件
     new ExtractTextPlugin("css/[name].css"),
     new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
-    new HtmlWebpackPlugin(getHtmlConfig('login', '用户登录')),
+    new HtmlWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
     new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果'))
     // new webpack.HotModuleReplacementPlugin()
   ]
