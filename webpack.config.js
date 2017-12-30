@@ -69,6 +69,10 @@ module.exports = {
       {
         test: /\.string$/,
         use: "html-loader"
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)\w*/,
+        loader: 'file-loader'
       }
     ]
   },

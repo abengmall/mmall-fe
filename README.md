@@ -22,3 +22,24 @@
 
 # 解决bash命令行ctrl+c不能杀死node进程的问题（2个进程 ctrl+c只能杀死一个进程，导致再次启动dev-server的时候无法开启服务）
 解决方法 用系统自带的命令行工具 ctrl+c即可停止node进程
+
+# webpack中配置font-awesome (此方法可以兼容ie8)
+  1 安装依赖
+  npm install font-awesome --save
+  2 在js文件中引用
+  require('node_modules/font-awesome/css/font-awesome.min.css') // 需要在webpack.config.js中配置别名
+  如下：
+  resolve: {
+    alias: {
+      node_modules: __dirname + '/node_modules',
+      util: __dirname + '/src/util',
+      page: __dirname + '/src/page',
+      service: __dirname + '/src/service',
+      image: __dirname + '/src/image'
+    }
+  }
+  3 在webpack.config.js中添加对字体文件的处理loader 用file-loader即可 
+      {
+        test: /\.(eot|ttf|woff|woff2)\w*/,
+        loader: 'file-loader'
+      }

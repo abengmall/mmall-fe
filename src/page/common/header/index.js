@@ -8,9 +8,10 @@ var header = {
     },
     onLoad : function () {
         var keyword = _mm.getUrlParam('keyword');
+        console.log(keyword);
         if(keyword){
             //keyword存在，则回填输入框
-            $('#search-input').val(keyword);
+            // $('#search-input').val(keyword);
         }
     },
     bindEvent : function(){
