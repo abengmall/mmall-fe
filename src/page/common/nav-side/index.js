@@ -1,6 +1,8 @@
 require('./index.css');
-var _mm                 = require('util/mm.js');
+var _mm = require('util/mm.js');
 var templateIndex       = require('./index.string');
+// var templateIndex = require('./index.tpl');
+
 //侧边导航
 var navSide = {
     option : {
@@ -25,10 +27,14 @@ var navSide = {
                 this.option.navList[i].isActive = true;
             }
         }
-        //渲染数据
+        //渲染数据 用 hogon渲染
         var navHtml = _mm.renderHtml(templateIndex,{
             navList : this.option.navList
         });
+        // 用ejs渲染 不支持ie8 9
+/*        var navHtml = _mm.renderEjsHtml(templateIndex,{
+            navList : this.option.navList
+        });*/
         //将html放入容器
         $('.nav-side').html(navHtml);
     }

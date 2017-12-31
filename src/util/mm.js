@@ -33,10 +33,16 @@ var _mm = {
     var result = window.location.search.substring(1).match(reg);
     return result? decodeURIComponent(result[2]): null;
   },
-  // 渲染HTML模板
+  // 渲染HTML模板 用hogan渲染 
   renderHtml: function (htmlTemplate, data) {
     var template = Hogan.compile(htmlTemplate);
     var output = template.render(data);
+    return output;
+  },
+  // 用ejs渲染HTML模板
+  // layerTpl是ejs模板字符串函数 切记 是个函数
+  renderEjsHtml: function (layerTpl, data) {
+    var output = layerTpl(data);
     return output;
   },
   // 成功提示

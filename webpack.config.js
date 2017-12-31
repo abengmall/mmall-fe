@@ -23,6 +23,7 @@ module.exports = {
   },
   output: {
     path: __dirname + '/dist',
+    // 调试时打开
     publicPath: '/dist',
     filename: 'js/[name].js'
   },
@@ -38,13 +39,6 @@ module.exports = {
       image: __dirname + '/src/image'
     }
   },
-/*  devServer: {
-    contentBase: './dist/view',
-    historyApiFallback: true,
-    inline: true,
-    port: 8080,
-    noInfo : true
-  },*/
   module: {
     rules: [
       {
@@ -53,6 +47,17 @@ module.exports = {
           fallback: "style-loader",
           use: "css-loader"
         })
+      },
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        },
+        exclude: /node_modules/,
+        include: /src/
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
@@ -73,6 +78,14 @@ module.exports = {
       {
         test: /\.(eot|ttf|woff|woff2)\w*/,
         loader: 'file-loader'
+      },
+      {
+        test: /\.tpl$/,
+        use: [
+          {
+            loader: 'ejs-loader'
+          }
+        ]
       }
     ]
   },
@@ -87,6 +100,5 @@ module.exports = {
     new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
     new HtmlWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
     new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果'))
-    // new webpack.HotModuleReplacementPlugin()
   ]
 }

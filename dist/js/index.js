@@ -5,28 +5,31 @@ webpackJsonp([0],[
 /* 3 */,
 /* 4 */,
 /* 5 */,
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(7);
-
-
-/***/ }),
+/* 6 */,
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(8);
-var $ = __webpack_require__(9);
+module.exports = __webpack_require__(8);
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(9);
+var $ = __webpack_require__(10);
 var _mm = __webpack_require__(0);
 
 __webpack_require__(1);
-__webpack_require__(14);
+__webpack_require__(15);
 
-var navSide = __webpack_require__(16);
-navSide.init({name: 'user-center'});
+var navSide = __webpack_require__(17);
+navSide.init({ name: 'user-center' });
 
-
-__webpack_require__(19);
+__webpack_require__(20);
 
 /*_mm.request({
   url: '/product/list.do?keyword=1',
@@ -47,26 +50,29 @@ var template = "Follow {{screenName}}.";
 console.log(_mm.renderHtml(template, data));*/
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = window.jQuery;
 
 /***/ }),
-/* 10 */,
 /* 11 */,
 /* 12 */,
 /* 13 */,
-/* 14 */
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(15);
+"use strict";
+
+
+__webpack_require__(16);
 
 var _mm = __webpack_require__(0);
 /*var _user = require('service/user-service.js');
@@ -120,117 +126,125 @@ var _cart = require('service/cart-service.js');*/
 module.exports  = nav.init();*/
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(17);
-var _mm                 = __webpack_require__(0);
-var templateIndex       = __webpack_require__(18);
+"use strict";
+
+
+__webpack_require__(18);
+var _mm = __webpack_require__(0);
+var templateIndex = __webpack_require__(19);
+// var templateIndex = require('./index.tpl');
+
 //侧边导航
 var navSide = {
-    option : {
-        name : '',
-        navList : [
-            {name : 'user-center', desc : '个人中心', href: './user-center.html'},
-            {name : 'order-list', desc : '我的订单', href: './order-list.html'},
-            {name : 'user-pass-update', desc : '修改密码', href: './user-pass-update.html'},
-            {name : 'about', desc : '关于MMall', href: './about.html'}
-        ]
+    option: {
+        name: '',
+        navList: [{ name: 'user-center', desc: '个人中心', href: './user-center.html' }, { name: 'order-list', desc: '我的订单', href: './order-list.html' }, { name: 'user-pass-update', desc: '修改密码', href: './user-pass-update.html' }, { name: 'about', desc: '关于MMall', href: './about.html' }]
     },
-    init : function(option){
+    init: function init(option) {
         // 合并选项
         $.extend(this.option, option);
         this.renderNav();
     },
     //渲染导航菜单
-    renderNav : function(){
+    renderNav: function renderNav() {
         //计算active数据
-        for(var i = 0,iLength = this.option.navList.length;i<iLength;i++){
-            if(this.option.navList[i].name === this.option.name){
+        for (var i = 0, iLength = this.option.navList.length; i < iLength; i++) {
+            if (this.option.navList[i].name === this.option.name) {
                 this.option.navList[i].isActive = true;
             }
         }
-        //渲染数据
-        var navHtml = _mm.renderHtml(templateIndex,{
-            navList : this.option.navList
+        //渲染数据 用 hogon渲染
+        var navHtml = _mm.renderHtml(templateIndex, {
+            navList: this.option.navList
         });
+        // 用ejs渲染 不支持ie8 9
+        /*        var navHtml = _mm.renderEjsHtml(templateIndex,{
+                    navList : this.option.navList
+                });*/
         //将html放入容器
         $('.nav-side').html(navHtml);
     }
 };
 
-module.exports  = navSide;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+module.exports = navSide;
 
 /***/ }),
 /* 18 */
 /***/ (function(module, exports) {
 
-module.exports = "{{#navList}}\r\n{{#isActive}}\r\n<li class=\"nav-item active\">\r\n{{/isActive}}\r\n{{^isActive}}\r\n<li class=\"nav-item\">\r\n{{/isActive}}\r\n    <a class=\"link\" href=\"{{href}}\">{{desc}}</a>\r\n</li>\r\n{{/navList}}";
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports) {
+
+module.exports = "{{#navList}}\r\n{{#isActive}}\r\n<li class=\"nav-item active\">\r\n{{/isActive}}\r\n{{^isActive}}\r\n<li class=\"nav-item\">\r\n{{/isActive}}\r\n    <a class=\"link\" href=\"{{href}}\">{{desc}}</a>\r\n</li>\r\n{{/navList}}";
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(20);
+"use strict";
+
+
+__webpack_require__(21);
 var _mm = __webpack_require__(0);
 
 var header = {
-    init : function(){
+    init: function init() {
         this.onLoad();
         this.bindEvent();
     },
-    onLoad : function () {
+    onLoad: function onLoad() {
         var keyword = _mm.getUrlParam('keyword');
-        if(keyword){
+        if (keyword) {
             //keyword存在，则回填输入框
+            // 亲测此语句无效 当前location是不带参数的
             $('#search-input').val(keyword);
         }
     },
-    bindEvent : function(){
+    bindEvent: function bindEvent() {
         var _this = this;
         $('#search-btn').click(function () {
             //点击搜索按钮，做提交
             _this.searchSubmit();
         });
         //输入回车后做提交
-        $('#search-input').keyup(function(e){
-            if(e.keyCode===13){
+        $('#search-input').keyup(function (e) {
+            if (e.keyCode === 13) {
                 _this.searchSubmit();
             }
-        })
+        });
     },
     //搜索的提交
-    searchSubmit : function () {
+    searchSubmit: function searchSubmit() {
         var keyword = $.trim($('#search-input').val());
         // 如果提交的时候有keyword，正常跳转到list页；
-        if(keyword){
+        if (keyword) {
             window.location.href = './list.html?keyword=' + keyword;
-        }else{
+        } else {
             //keyword为空，直接返回首页
             _mm.goHome();
         }
     }
 };
 
-module.exports  = header.init();
+module.exports = header.init();
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
-],[6]);
+],[7]);

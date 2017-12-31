@@ -141,7 +141,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "./dist/view";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -154,16 +154,19 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hogan = __webpack_require__(10);
+"use strict";
+
+
+var Hogan = __webpack_require__(11);
 
 var _mm = {
-  request: function (param) {
+  request: function request(param) {
     var _this = this;
     $.ajax({
       type: param.method || 'get',
       url: param.url || '',
       datatype: param.type || 'json',
-      success: function (res) {
+      success: function success(res) {
         // 得到数据
         if (res.status === 0) {
           typeof param.success === 'function' && param.success(res.data, res.msg);
@@ -175,52 +178,60 @@ var _mm = {
           _this.dologin();
         }
       },
-      err: function (err) {
-        typeof param.error === 'function' && param.error(err.statusText);
+      err: function err(_err) {
+        typeof param.error === 'function' && param.error(_err.statusText);
       }
-    })
+    });
   },
   // 处理登录
-  dologin: function () {
+  dologin: function dologin() {
     window.location.href = './user-login.html?redirect=' + encodeURLComponent(window.location.href);
   },
-  getUrlParam: function (name) {
+  getUrlParam: function getUrlParam(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
     var result = window.location.search.substring(1).match(reg);
-    return result? decodeURIComponent(result[2]): null;
+    return result ? decodeURIComponent(result[2]) : null;
   },
-  // 渲染HTML模板
-  renderHtml: function (htmlTemplate, data) {
+  // 渲染HTML模板 用hogan渲染 
+  renderHtml: function renderHtml(htmlTemplate, data) {
     var template = Hogan.compile(htmlTemplate);
     var output = template.render(data);
     return output;
   },
+  // 用ejs渲染HTML模板
+  // layerTpl是ejs模板字符串函数 切记 是个函数
+  renderEjsHtml: function renderEjsHtml(layerTpl, data) {
+    var output = layerTpl(data);
+    return output;
+  },
   // 成功提示
-  successTips: function (msg) {
+  successTips: function successTips(msg) {
     alert(msg || '操作成功');
   },
   // 错误提示
-  errorTips: function (msg) {
+  errorTips: function errorTips(msg) {
     alert(msg || '哪里不对了');
   },
   // 字段验证 验证是否为空 手机 邮箱
-  validate : function(value, type){
+  validate: function validate(value, type) {
     var value = $.trim(value);
     // 非空验证
-    if('require' === type){
+    if ('require' === type) {
       return !!value;
     }
     // 手机号验证
-    if('phone' === type){
-      return /^1\d{10}$/.test(value);
+    if ('phone' === type) {
+      return (/^1\d{10}$/.test(value)
+      );
     }
     // 邮箱格式验证
-    if('email' === type){
-      return /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(value);
+    if ('email' === type) {
+      return (/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(value)
+      );
     }
   },
   // 跳转到首页
-  goHome: function () {
+  goHome: function goHome() {
     window.location.href = './index.html';
   }
 };
@@ -230,7 +241,10 @@ module.exports = _mm;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(13);
+"use strict";
+
+
+__webpack_require__(14);
 // 这样引用打包时报错 直接在footer的html模板中引用font-awesome的cdn文件 作为替换方案
 // require('node_modules/font-awesome/css/font-awesome.css');
 
@@ -245,8 +259,12 @@ module.exports = __webpack_require__(3);
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 __webpack_require__(4);
 __webpack_require__(5);
+__webpack_require__(6);
 
 /***/ }),
 /* 4 */
@@ -261,11 +279,17 @@ __webpack_require__(5);
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 6 */,
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */
+/* 10 */,
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -285,14 +309,14 @@ __webpack_require__(5);
 
 // This file is for use with Node.js. See dist/ for browser files.
 
-var Hogan = __webpack_require__(11);
-Hogan.Template = __webpack_require__(12).Template;
+var Hogan = __webpack_require__(12);
+Hogan.Template = __webpack_require__(13).Template;
 Hogan.template = Hogan.Template;
 module.exports = Hogan;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -721,7 +745,7 @@ module.exports = Hogan;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1068,7 +1092,7 @@ var Hogan = {};
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
