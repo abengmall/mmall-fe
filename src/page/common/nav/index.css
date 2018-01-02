@@ -8,7 +8,7 @@
     float: left;
 }
 .nav .user.login{
-   display: none;
+   -display: none;
 }
 .nav .user .link{
     margin-right: 5px;

@@ -43,3 +43,6 @@
         test: /\.(eot|ttf|woff|woff2)\w*/,
         loader: 'file-loader'
       }
+
+# 关于Public Path(公共路径)
+http://www.css88.com/doc/webpack2/guides/public-path/
