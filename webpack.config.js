@@ -2,6 +2,9 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+//环境变量配置，dev/online
+var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
+
 var getHtmlConfig = function (name, title) {
   return {
     template: './src/view/' + name + '.html',
@@ -9,11 +12,12 @@ var getHtmlConfig = function (name, title) {
     title: title,
     hash: true,
     inject: 'body',
+    favicon: './favicon.ico',
     chunks: ['common', name]    
   }
 }
 
-module.exports = {
+var config = {
   //入口文件
   entry: {
     'common': ['./src/page/common/index.js'],
@@ -25,7 +29,7 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     // 调试时打开
-    publicPath: '/dist',
+    publicPath: WEBPACK_ENV ===  'dev'? '/dist/' : '//s.happymall.com/mmall-fe/dist/',
     filename: 'js/[name].js'
   },
   externals: {
@@ -78,7 +82,15 @@ module.exports = {
       },
       {
         test: /\.(eot|ttf|woff|woff2)\w*/,
-        loader: 'file-loader'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 1000,
+              name: 'assets/[name]-[hash:5].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.tpl$/,
@@ -103,4 +115,6 @@ module.exports = {
     new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果')),
     new HtmlWebpackPlugin(getHtmlConfig('user-register', '用户注册'))
   ]
-}
+};
+
+module.exports = config;
